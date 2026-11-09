@@ -13,12 +13,19 @@ type Message = {
   sender: "user" | "ai";
 };
 
+let messageIdCounter = 0;
+
+function makeId() {
+  messageIdCounter += 1;
+  return `${Date.now()}-${messageIdCounter}`;
+}
+
 export function AiAssistant() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([
     {
-      id: "1",
+      id: makeId(),
       text: "Hi there! I'm Happy Cleaning's assistant. Ask me about services, pricing, booking, or anything else.",
       sender: "ai",
     },
@@ -29,13 +36,6 @@ export function AiAssistant() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
-
-  const [messageIdCounter, setMessageIdCounter] = useState(0);
-
-  function makeId() {
-    setMessageIdCounter((n) => n + 1);
-    return `${Date.now()}-${messageIdCounter}`;
-  }
 
   async function handleSend(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -116,15 +116,17 @@ export function AiAssistant() {
 
   return (
     <>
-      {/* Floating trigger */}
+      {/* Floating trigger - positioned left side, WhatsAppFloat is on right */}
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         aria-label={open ? "Close assistant" : "Open assistant"}
-        className={`fixed left-6 bottom-6 z-50 ${open ? "hidden" : ""} inline-flex h-14 w-14 items-center justify-center rounded-full bg-coral text-white shadow-[0_14px_40px_rgba(229,108,78,0.35)] transition hover:scale-105 hover:bg-coral-deep`}
+        className="fixed left-6 bottom-6 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-coral text-white shadow-[0_14px_40px_rgba(229,108,78,0.35)] transition hover:scale-105 hover:bg-coral-deep"
       >
-        <Sparkle className="h-6 w-6 animate-bounce" />
-        <span className="absolute -top-2 -right-2 h-3 w-3 rounded-full bg-white border-2 border-coral" />
+        <span className="relative">
+          <Sparkle className="h-6 w-6 animate-bounce" />
+        </span>
+        <span className="absolute -top-2 -right-2 h-3 w-3 rounded-full bg-white border-2 border-coral animate-pulse" />
       </button>
 
       {/* Chat panel */}
