@@ -14,6 +14,7 @@ import {
   Truck,
   WhatsApp,
 } from "@/components/Icons";
+import { BeautifulBackground } from "@/components/BeautifulBackground";
 import { Reveal } from "@/components/Reveal";
 import { ServiceIcon } from "@/components/ServiceIcon";
 import { services } from "@/lib/services";
@@ -54,6 +55,8 @@ const faqs = [
 export default function HomePage() {
   return (
     <>
+      <BeautifulBackground />
+
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute -top-32 -right-40 h-[30rem] w-[30rem] rounded-full bg-sage/70 blur-3xl" />
         <div className="pointer-events-none absolute top-1/3 -left-40 h-80 w-80 rounded-full bg-gold/20 blur-3xl" />
