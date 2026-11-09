@@ -1,20 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { Sparkle, Leaf, Truck, Heart, WhatsApp } from "./Icons";
 
 export function BeautifulBackground() {
-  const [particles, setParticles] = useState<number[]>([]);
-
-  useEffect(() => {
-    // Create floating laundry/sparkle particles
-    const count = 20;
-    const initial = Array.from({ length: count }, (_, i) => i);
-    setParticles(initial);
-
-    // Animate particles with CSS - no JS needed for movement
-  }, []);
-
   return (
     <div className="fixed inset-0 z-[-1] overflow-hidden">
       {/* Background video - your laundry video */}
@@ -46,7 +34,7 @@ export function BeautifulBackground() {
             className="absolute rounded-full bg-white/20 backdrop-blur-sm border border-white/10"
             style={{
               left: `${10 + i * 10}%`,
-              bottom: `-10%`,
+              bottom: "-10%",
               width: `${4 + (i % 3) * 2}px`,
               height: `${4 + (i % 3) * 2}px`,
               animation: `rise-bubble ${6 + i * 2}s ease-in-out infinite`,
@@ -59,15 +47,16 @@ export function BeautifulBackground() {
 
       {/* Floating sparkles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {particles.map((i) => (
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((i) => (
           <div
             key={i}
             className="absolute"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `sparkle-float ${4 + Math.random() * 4}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 5}s`,
+              left: `${10 + i * 6}%`,
+              top: `${20 + i * 5}%`,
+              animation: `sparkle-float ${5 + i}s ease-in-out infinite`,
+              animationDelay: `${i * 0.4}s`,
+              opacity: 0.7,
             }}
           >
             <Sparkle className="h-3 w-3 text-coral/40" />
