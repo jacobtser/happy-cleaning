@@ -62,8 +62,8 @@ export default function HomePage() {
         <div className="pointer-events-none absolute top-1/3 -left-40 h-80 w-80 rounded-full bg-gold/20 blur-3xl" />
         <div className="paper-texture pointer-events-none absolute inset-0 opacity-30" />
 
-        <div className="container-page relative grid gap-12 pt-10 pb-14 sm:pt-12 sm:pb-16 lg:grid-cols-[1.04fr_0.96fr] lg:items-center lg:gap-10 lg:pt-16 lg:pb-24">
-          <div className="max-w-2xl">
+        <div className="hero-shell container-page relative grid gap-12 pt-10 pb-14 sm:pt-12 sm:pb-16 lg:grid-cols-[1.04fr_0.96fr] lg:items-center lg:gap-10 lg:pt-16 lg:pb-24">
+          <div className="hero-copy max-w-2xl">
             <p className="eyebrow animate-fade-up">
               Laundry & cleaning · Sege-Ada
             </p>
@@ -74,13 +74,13 @@ export default function HomePage() {
                 made lighter.
               </span>
             </h1>
-            <p className="animate-fade-up-delay-2 mt-6 max-w-xl text-pretty text-[1.02rem] leading-7 text-muted sm:text-lg sm:leading-8">
+            <p className="hero-lede animate-fade-up-delay-2 mt-6 max-w-xl text-pretty text-[1.02rem] leading-7 text-muted sm:text-lg sm:leading-8">
               Happy Cleaning Services takes the laundry off your hands — fresh
               washing, careful dry cleaning, deep carpet care and crisp
               ironing, with pickup and drop-off around Sege-Ada.
             </p>
 
-            <div className="animate-fade-up-delay-3 mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="hero-actions animate-fade-up-delay-3 mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/book" className="btn btn-coral">
                 Place an order
                 <ArrowRight className="h-4 w-4" />
