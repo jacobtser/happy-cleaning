@@ -40,6 +40,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -72,6 +73,28 @@ textarea {
   font-optical-sizing: auto;
 }
 
+/* Shared hero heading: scales smoothly from small phones to wide desktops. */
+.hero-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(2.8rem, 11vw, 3.55rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.94;
+  text-wrap: balance;
+}
+
+@media (min-width: 640px) {
+  .hero-display {
+    font-size: clamp(3.75rem, 7vw, 4.6rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-display {
+    font-size: clamp(4.3rem, 5.8vw, 5.7rem);
+  }
+}
+
 .container-page {
   width: 100%;
   max-width: 78rem;
@@ -89,6 +112,11 @@ textarea {
   .container-page {
     padding-inline: 2.5rem;
   }
+}
+
+/* Keep the footer's last line above the fixed chat and WhatsApp buttons. */
+.footer-pad {
+  padding-bottom: calc(6rem + env(safe-area-inset-bottom));
 }
 
 .section-pad {
@@ -129,6 +157,18 @@ textarea {
 
 .eyebrow-light {
   color: rgba(255, 253, 248, 0.76);
+}
+
+@media (max-width: 380px) {
+  .eyebrow {
+    gap: 0.45rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+  }
+
+  .eyebrow::before {
+    width: 1.4rem;
+  }
 }
 
 .btn {
@@ -288,6 +328,20 @@ textarea {
 .field-error:focus {
   border-color: #c85138;
   box-shadow: 0 0 0 4px rgba(200, 81, 56, 0.1);
+}
+
+/* Keep controls at 16px on phones so iOS does not zoom the page on focus. */
+@media (max-width: 639px) {
+  .field {
+    font-size: 1rem;
+  }
+}
+
+/* Give the chat panel room for messages on short screens and phones in landscape. */
+@media (max-height: 600px) {
+  .chat-human-help {
+    display: none;
+  }
 }
 
 .label {

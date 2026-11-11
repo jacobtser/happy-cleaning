@@ -903,7 +903,7 @@ export function OrderForm({ initialService }: { initialService?: ServiceId }) {
           disabled={step === 1}
           className={`btn min-h-11 px-4 text-[0.78rem] ${
             step === 1
-              ? "invisible"
+              ? "hidden sm:invisible sm:flex"
               : "btn-outline"
           }`}
         >

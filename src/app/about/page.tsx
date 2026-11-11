@@ -74,7 +74,7 @@ export default function AboutPage() {
         <div className="container-page relative grid gap-12 py-12 lg:grid-cols-[1fr_0.92fr] lg:items-center lg:py-20">
           <div>
             <p className="eyebrow animate-fade-up">Our story</p>
-            <h1 className="animate-fade-up-delay-1 mt-5 max-w-2xl font-display text-[3.2rem] leading-[0.92] font-semibold tracking-[-0.045em] text-forest sm:text-6xl lg:text-7xl">
+            <h1 className="hero-display animate-fade-up-delay-1 mt-5 max-w-2xl text-forest">
               Care in every
               <br />
               <span className="italic text-coral">fold.</span>
@@ -123,18 +123,6 @@ export default function AboutPage() {
                 <p className="mt-1 font-display text-xl leading-tight">
                   Sege-Ada, Greater Accra
                 </p>
-              </div>
-            </div>
-
-            <div className="animate-float absolute -bottom-6 -left-3 hidden w-28 rotate-[-4deg] overflow-hidden rounded-2xl border-[5px] border-cream shadow-xl sm:block">
-              <div className="relative aspect-square">
-                <Image
-                  src="/images/photos/towels-stack.jpg"
-                  alt="A neat stack of fresh white towels"
-                  fill
-                  sizes="112px"
-                  className="object-cover"
-                />
               </div>
             </div>
 

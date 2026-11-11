@@ -28,7 +28,7 @@ export default function ServicesPage() {
         <div className="container-page relative grid gap-12 py-14 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:py-20">
           <div>
             <p className="eyebrow animate-fade-up">The service menu</p>
-            <h1 className="animate-fade-up-delay-1 mt-5 max-w-3xl font-display text-[3.3rem] leading-[0.94] font-semibold tracking-[-0.045em] text-forest sm:text-6xl lg:text-7xl">
+            <h1 className="hero-display animate-fade-up-delay-1 mt-5 max-w-3xl text-forest">
               Care for every fabric, corner and{" "}
               <span className="italic text-coral">crease.</span>
             </h1>

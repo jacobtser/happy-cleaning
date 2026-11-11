@@ -1,24 +1,28 @@
 "use client";
 
-import { Sparkle, Leaf, Truck, Heart, WhatsApp } from "./Icons";
+import { Sparkle } from "./Icons";
 
 export function BeautifulBackground() {
   return (
-    <div className="fixed inset-0 z-[-1] overflow-hidden">
-      {/* Background video - your laundry video */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-[-1] overflow-hidden"
+    >
+      {/* Background video, softened so the hero copy stays readable. */}
       <video
         autoPlay
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-60"
+        className="absolute inset-0 h-full w-full object-cover opacity-40"
       >
         <source src="/videos/laundry-background.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Gradient overlay - forest theme */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-forest-deep/80 via-forest/60 to-forest-deep/90" />
+      {/* Light veil keeps the brand's cream canvas and text contrast intact. */}
+      <div className="absolute inset-0 bg-cream/85" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-sage/35 via-transparent to-gold/10" />
 
       {/* Decorative glow blobs */}
       <div className="absolute -top-20 -left-20 w-[40rem] h-[40rem] rounded-full bg-coral/20 blur-[120px] animate-pulse-slow" />
@@ -62,34 +66,6 @@ export function BeautifulBackground() {
             <Sparkle className="h-3 w-3 text-coral/40" />
           </div>
         ))}
-      </div>
-
-      {/* Floating laundry items - towels and shirts */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div
-          className="absolute top-20 left-10 w-16 h-16 bg-white/30 backdrop-blur rounded-xl rotate-12 animate-float-slow"
-          style={{ animationDelay: "0s" }}
-        >
-          <Heart className="h-8 w-8 text-coral/60" />
-        </div>
-        <div
-          className="absolute top-30 right-10 w-20 h-16 bg-white/40 backdrop-blur rounded-xl rotate-6 animate-float-slow"
-          style={{ animationDelay: "2s" }}
-        >
-          <Truck className="h-8 w-8 text-gold/60" />
-        </div>
-        <div
-          className="absolute bottom-40 left-20 w-14 h-14 bg-white/30 backdrop-blur rounded-full animate-float-slow"
-          style={{ animationDelay: "4s" }}
-        >
-          <Leaf className="h-6 w-6 text-sage/60" />
-        </div>
-        <div
-          className="absolute bottom-20 right-20 w-18 h-14 bg-white/50 backdrop-blur rounded-xl rotate-3 animate-float-slow"
-          style={{ animationDelay: "1s" }}
-        >
-          <WhatsApp className="h-7 w-7 text-[#1faa59]/70" />
-        </div>
       </div>
 
       {/* Bottom decorative line */}

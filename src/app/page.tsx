@@ -62,19 +62,19 @@ export default function HomePage() {
         <div className="pointer-events-none absolute top-1/3 -left-40 h-80 w-80 rounded-full bg-gold/20 blur-3xl" />
         <div className="paper-texture pointer-events-none absolute inset-0 opacity-30" />
 
-        <div className="container-page relative grid gap-14 pt-12 pb-16 lg:grid-cols-[1.04fr_0.96fr] lg:items-center lg:gap-10 lg:pt-16 lg:pb-24">
+        <div className="container-page relative grid gap-12 pt-10 pb-14 sm:pt-12 sm:pb-16 lg:grid-cols-[1.04fr_0.96fr] lg:items-center lg:gap-10 lg:pt-16 lg:pb-24">
           <div className="max-w-2xl">
             <p className="eyebrow animate-fade-up">
               Laundry & cleaning · Sege-Ada
             </p>
-            <h1 className="animate-fade-up-delay-1 mt-5 font-display text-[3.55rem] leading-[0.91] font-semibold tracking-[-0.045em] text-forest sm:text-[4.6rem] lg:text-[5.2rem] xl:text-[5.8rem]">
+            <h1 className="hero-display animate-fade-up-delay-1 mt-5 text-forest">
               Wash day,
               <br />
               <span className="relative inline-block pr-2 italic text-coral">
                 made lighter.
               </span>
             </h1>
-            <p className="animate-fade-up-delay-2 mt-6 max-w-xl text-[1.02rem] leading-7 text-muted sm:text-lg sm:leading-8">
+            <p className="animate-fade-up-delay-2 mt-6 max-w-xl text-pretty text-[1.02rem] leading-7 text-muted sm:text-lg sm:leading-8">
               Happy Cleaning Services takes the laundry off your hands — fresh
               washing, careful dry cleaning, deep carpet care and crisp
               ironing, with pickup and drop-off around Sege-Ada.
@@ -155,33 +155,6 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="animate-float-alt absolute -bottom-6 -right-2 rounded-2xl border border-line bg-paper/95 px-4 py-3 shadow-[0_16px_40px_rgba(12,43,36,0.14)] backdrop-blur sm:-right-7 sm:px-5 sm:py-4">
-                <div className="flex items-center gap-3">
-                  <span className="grid h-9 w-9 place-items-center rounded-full bg-coral text-white">
-                    <Truck className="h-4.5 w-4.5" />
-                  </span>
-                  <div>
-                    <p className="text-[0.58rem] font-extrabold uppercase tracking-[0.18em] text-muted">
-                      Around
-                    </p>
-                    <p className="text-sm font-extrabold text-forest">
-                      Sege-Ada
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -bottom-10 -left-3 hidden w-32 rotate-[-5deg] overflow-hidden rounded-2xl border-[5px] border-cream shadow-xl sm:block">
-                <div className="relative aspect-square">
-                  <Image
-                    src="/images/photos/laundry-detail.jpg"
-                    alt="Clean laundry drying neatly on a rack"
-                    fill
-                    sizes="128px"
-                    className="object-cover"
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </div>

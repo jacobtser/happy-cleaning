@@ -38,7 +38,7 @@ export default function PrivacyPage() {
         <div className="paper-texture pointer-events-none absolute inset-0 opacity-30" />
         <div className="container-page relative py-12 lg:py-16">
           <p className="eyebrow animate-fade-up">Privacy notice</p>
-          <h1 className="animate-fade-up-delay-1 mt-5 max-w-3xl font-display text-[3rem] leading-[0.94] font-semibold tracking-[-0.045em] text-forest sm:text-6xl">
+          <h1 className="hero-display animate-fade-up-delay-1 mt-5 max-w-3xl text-forest">
             Your details,
             <br />
             <span className="italic text-coral">treated with care.</span>

@@ -76,7 +76,7 @@ export default function ContactPage() {
         <div className="container-page relative py-12 lg:py-16">
           <div className="max-w-3xl">
             <p className="eyebrow animate-fade-up">Contact & complaints</p>
-            <h1 className="animate-fade-up-delay-1 mt-5 font-display text-[3rem] leading-[0.94] font-semibold tracking-[-0.045em] text-forest sm:text-6xl lg:text-7xl">
+            <h1 className="hero-display animate-fade-up-delay-1 mt-5 text-forest">
               A real person,
               <br />
               <span className="italic text-coral">ready to help.</span>

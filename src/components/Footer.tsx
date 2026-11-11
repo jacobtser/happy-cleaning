@@ -15,7 +15,7 @@ import { Logo } from "./Logo";
 export function Footer() {
   return (
     <footer className="bg-forest-deep text-cream">
-      <div className="container-page pt-16 pb-8 md:pt-20">
+      <div className="container-page footer-pad pt-16 md:pt-20">
         <div className="grid gap-12 border-b border-white/10 pb-12 md:grid-cols-2 lg:grid-cols-[1.45fr_0.75fr_0.9fr_1.1fr]">
           <div>
             <Link href="/" aria-label="Happy Cleaning Services home">

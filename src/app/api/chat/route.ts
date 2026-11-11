@@ -11,7 +11,7 @@ const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 20;
 
 type ChatMessage = {
-  role: "system" | "user";
+  role: "system" | "user" | "assistant";
   content: string;
 };
 
@@ -314,8 +314,34 @@ export async function POST(request: Request) {
     );
   }
 
+  // Keep a short, validated slice of the conversation so follow-up questions
+  // such as "how much?" still have context.
+  const history: ChatMessage[] = [];
+  const rawHistory =
+    body && typeof body === "object"
+      ? (body as { history?: unknown }).history
+      : undefined;
+
+  if (Array.isArray(rawHistory)) {
+    for (const entry of rawHistory.slice(-8)) {
+      if (!entry || typeof entry !== "object") continue;
+
+      const role = (entry as { role?: unknown }).role;
+      const content = (entry as { content?: unknown }).content;
+
+      if (role !== "user" && role !== "assistant") continue;
+      if (typeof content !== "string") continue;
+
+      const trimmed = content.trim();
+      if (!trimmed || trimmed.length > MAX_MESSAGE_LENGTH) continue;
+
+      history.push({ role, content: trimmed });
+    }
+  }
+
   const messages: ChatMessage[] = [
     { role: "system", content: systemPrompt() },
+    ...history,
     { role: "user", content: message },
   ];
 

@@ -66,7 +66,7 @@ export default async function BookPage({
           <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
             <div>
               <p className="eyebrow animate-fade-up">Place an order</p>
-              <h1 className="animate-fade-up-delay-1 mt-5 max-w-2xl font-display text-[3rem] leading-[0.94] font-semibold tracking-[-0.045em] text-forest sm:text-6xl lg:text-7xl">
+              <h1 className="hero-display animate-fade-up-delay-1 mt-5 max-w-2xl text-forest">
                 Let&apos;s lighten
                 <br />
                 your <span className="italic text-coral">wash day.</span>

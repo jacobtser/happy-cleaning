@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, type FormEvent } from "react";
 import Link from "next/link";
-import { Mail, Send, Sparkle, WhatsApp } from "./Icons";
+import { Close, Mail, Send, Sparkle, WhatsApp } from "./Icons";
 
 type Message = {
   id: string;
@@ -279,18 +279,40 @@ export function AiAssistant() {
   ]);
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const isSmallScreen = window.matchMedia("(max-width: 639px)").matches;
+    const previousOverflow = document.body.style.overflow;
+
+    if (isSmallScreen) {
+      document.body.style.overflow = "hidden";
+    }
+
+    const timer = window.setTimeout(() => inputRef.current?.focus(), 150);
+
+    return () => {
+      window.clearTimeout(timer);
+      if (isSmallScreen) {
+        document.body.style.overflow = previousOverflow;
+      }
+    };
+  }, [open]);
+
   async function handleSend(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!input.trim()) return;
+    const message = input.trim();
+    if (!message || loading) return;
 
     const userMessage: Message = {
       id: makeId(),
-      text: input.trim(),
+      text: message,
       sender: "user",
     };
     setMessages((prev) => [...prev, userMessage]);
@@ -299,28 +321,23 @@ export function AiAssistant() {
 
     let aiReply = "";
 
-    // Try knowledge base first (instant, no API needed)
-    const kbAnswer = findBestAnswer(input.trim());
-    if (kbAnswer) {
-      aiReply = kbAnswer;
-      setTimeout(() => {
-        setMessages((prev) => [
-          ...prev,
-          { id: makeId(), text: aiReply, sender: "ai" },
-        ]);
-        setLoading(false);
-      }, 600);
-      return;
-    }
+    // Send a short slice of the conversation so follow-ups keep their context.
+    const history = messages
+      .slice(1)
+      .slice(-8)
+      .map((entry) => ({
+        role: entry.sender === "user" ? "user" : "assistant",
+        content: entry.text,
+      }));
 
-    // Ask the server-side assistant, which keeps provider keys private.
+    // Every message goes to the AI first, so the assistant can answer freely.
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: input.trim() }),
+        body: JSON.stringify({ message, history }),
       });
-      const data = (await response.json()) as {
+      const data = (await response.json().catch(() => ({}))) as {
         reply?: string;
         error?: string;
       };
@@ -328,14 +345,21 @@ export function AiAssistant() {
       if (response.status === 429) {
         aiReply =
           "I'm getting a lot of messages right now. Please try again in a moment, or message us on WhatsApp.";
+      } else if (response.ok && data.reply) {
+        aiReply = data.reply.replace(/\*\*/g, "").trim();
       } else {
-        aiReply =
-          (response.ok && data.reply) ||
-          data.error ||
-          "I'm having trouble connecting right now. You can still reach us directly on WhatsApp or by phone.";
+        aiReply = data.error?.trim() ?? "";
       }
     } catch {
+      // Network failure: fall through to the built-in answers below.
+    }
+
+    // If the AI is unavailable, use the local knowledge base rather than a
+    // dead-end message.
+    if (!aiReply) {
+      const fallback = findBestAnswer(message);
       aiReply =
+        fallback?.replace(/\*\*/g, "").trim() ||
         "I'm having trouble connecting right now. You can still reach us directly on WhatsApp or by phone.";
     }
 
@@ -353,103 +377,144 @@ export function AiAssistant() {
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         aria-label={open ? "Close assistant" : "Open assistant"}
-        className="fixed left-6 bottom-6 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-coral text-white shadow-[0_14px_40px_rgba(229,108,78,0.35)] transition hover:scale-105 hover:bg-coral-deep"
+        aria-expanded={open}
+        aria-controls="ai-chat-panel"
+        className="fixed left-3 bottom-[calc(env(safe-area-inset-bottom)_+_0.9rem)] z-50 inline-flex h-12 w-12 items-center justify-center rounded-full bg-coral text-white shadow-[0_14px_40px_rgba(229,108,78,0.35)] transition hover:scale-105 hover:bg-coral-deep sm:left-6 sm:bottom-6 sm:h-14 sm:w-14"
       >
         <span className="relative">
-          <Sparkle className="h-6 w-6 animate-bounce" />
+          <Sparkle className="h-5 w-5 animate-bounce sm:h-6 sm:w-6" />
         </span>
-        <span className="absolute -top-2 -right-2 h-3 w-3 rounded-full bg-white border-2 border-coral animate-pulse" />
+        <span className="absolute -top-1.5 -right-1.5 h-3 w-3 rounded-full border-2 border-coral bg-white animate-pulse sm:-top-2 sm:-right-2" />
       </button>
 
       {/* Chat panel */}
       {open && (
-        <div className="fixed left-6 bottom-22 z-50 w-full md:w-[380px] h-[520px] flex flex-col rounded-[2rem] border border-line bg-paper soft-shadow overflow-hidden transform transition-all duration-300">
-          <div className="bg-forest p-5 text-cream flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="grid h-9 w-9 place-items-center rounded-full bg-gold text-forest-deep">
-                <Sparkle className="h-5 w-5" />
+        <>
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            aria-label="Close assistant"
+            className="fixed inset-0 z-40 bg-forest-deep/25 backdrop-blur-[1px] sm:hidden"
+          />
+
+          <div
+            id="ai-chat-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Happy Cleaning assistant"
+            className="animate-fade-up fixed inset-x-3 bottom-[calc(env(safe-area-inset-bottom)_+_4.4rem)] z-50 flex h-[min(34rem,calc(100dvh_-_10rem))] flex-col overflow-hidden rounded-[1.6rem] border border-line bg-paper soft-shadow sm:inset-x-auto sm:right-auto sm:bottom-24 sm:left-6 sm:h-[min(34rem,calc(100dvh_-_10rem))] sm:w-[380px] sm:rounded-[2rem]"
+          >
+            <div className="flex items-center justify-between gap-3 bg-forest p-4 text-cream sm:p-5">
+              <div className="flex min-w-0 items-center gap-3">
+                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold text-forest-deep">
+                  <Sparkle className="h-5 w-5" />
+                </div>
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-extrabold leading-none">
+                    Happy Assistant
+                  </p>
+                  <p className="mt-1 text-[0.7rem] leading-4 text-cream/70">
+                    AI support · Sege-Ada
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm font-extrabold leading-none">Happy Assistant</p>
-                <p className="text-[0.7rem] leading-4 text-cream/70">AI support · Sege-Ada</p>
+              <div className="flex shrink-0 items-center gap-1">
+                <a
+                  href="https://wa.me/233558184521"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Chat with a person on WhatsApp"
+                  className="grid h-9 w-9 place-items-center rounded-full text-cream/70 transition hover:bg-white/10 hover:text-cream"
+                >
+                  <WhatsApp className="h-4 w-4" />
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  className="grid h-9 w-9 place-items-center rounded-full text-cream/70 transition hover:bg-white/10 hover:text-cream"
+                  aria-label="Close chat"
+                >
+                  <Close className="h-4 w-4" />
+                </button>
               </div>
             </div>
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              className="text-cream/60 hover:text-cream transition"
-              aria-label="Close chat"
+
+            <div
+              aria-live="polite"
+              className="flex-1 space-y-3 overflow-y-auto overscroll-contain p-3 scroll-smooth sm:space-y-4 sm:p-4"
             >
-              ✕
-            </button>
-          </div>
-
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`max-w-[85%] rounded-xl p-3 text-sm leading-6 ${
-                  message.sender === "user"
-                    ? "ml-auto bg-forest text-cream"
-                    : "mr-auto bg-cream/60 text-forest/90 border border-line"
-                }`}
-              >
-                {message.text}
-              </div>
-            ))}
-            {loading && (
-              <div className="mr-auto bg-cream/60 text-forest/90 border border-line rounded-xl p-3 text-sm leading-6 animate-pulse">
-                Assistant is typing…
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-
-          <form onSubmit={handleSend} className="p-3 border-t border-line bg-cream/40">
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={input}
-                onChange={(event) => setInput(event.target.value)}
-                placeholder="Type a message…"
-                disabled={loading}
-                className="flex-1 field text-sm"
-              />
-              <button
-                type="submit"
-                disabled={loading || !input.trim()}
-                className="rounded-full p-2.5 bg-forest text-cream hover:bg-forest-deep transition disabled:opacity-50 disabled:cursor-not-allowed"
-                aria-label="Send message"
-              >
-                <Send className="h-4 w-4" />
-              </button>
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`max-w-[88%] whitespace-pre-line break-words rounded-2xl px-3.5 py-2.5 text-sm leading-6 ${
+                    message.sender === "user"
+                      ? "ml-auto rounded-br-md bg-forest text-cream"
+                      : "mr-auto rounded-bl-md border border-line bg-cream/60 text-forest/90"
+                  }`}
+                >
+                  {message.text}
+                </div>
+              ))}
+              {loading && (
+                <div className="mr-auto animate-pulse rounded-2xl rounded-bl-md border border-line bg-cream/60 px-3.5 py-2.5 text-sm leading-6 text-forest/90">
+                  Assistant is typing…
+                </div>
+              )}
+              <div ref={messagesEndRef} />
             </div>
-          </form>
 
-          <div className="p-3 bg-forest-deep text-cream">
-            <p className="text-[0.68rem] leading-5 text-cream/70 mb-3">
-              Prefer to talk to a person?
-            </p>
-            <div className="grid gap-2">
-              <a
-                href={`https://wa.me/233558184521`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-extrabold text-white bg-[#1faa59] hover:bg-[#168c49] transition"
-              >
-                <WhatsApp className="h-4 w-4" />
-                Chat on WhatsApp
-              </a>
-              <Link
-                href="/contact"
-                className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-extrabold text-forest bg-white/70 hover:bg-white transition"
-              >
-                <Mail className="h-4 w-4" />
-                Contact form
-              </Link>
+            <form
+              onSubmit={handleSend}
+              className="border-t border-line bg-cream/40 p-2.5 sm:p-3"
+            >
+              <div className="flex items-center gap-2">
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={input}
+                  onChange={(event) => setInput(event.target.value)}
+                  placeholder="Type a message…"
+                  disabled={loading}
+                  maxLength={1000}
+                  autoComplete="off"
+                  className="field min-w-0 flex-1"
+                />
+                <button
+                  type="submit"
+                  disabled={loading || !input.trim()}
+                  className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-forest text-cream transition hover:bg-forest-deep disabled:cursor-not-allowed disabled:opacity-50"
+                  aria-label="Send message"
+                >
+                  <Send className="h-4 w-4" />
+                </button>
+              </div>
+            </form>
+
+            <div className="chat-human-help border-t border-white/10 bg-forest-deep p-3 text-cream sm:p-4">
+              <p className="mb-2 text-[0.66rem] font-bold leading-5 text-cream/65">
+                Prefer to talk to a person?
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                <a
+                  href="https://wa.me/233558184521"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-1.5 rounded-xl bg-[#1faa59] px-2 py-2.5 text-[0.72rem] font-extrabold text-white transition hover:bg-[#168c49]"
+                >
+                  <WhatsApp className="h-4 w-4" />
+                  WhatsApp
+                </a>
+                <Link
+                  href="/contact"
+                  className="flex items-center justify-center gap-1.5 rounded-xl bg-white/10 px-2 py-2.5 text-[0.72rem] font-extrabold text-cream transition hover:bg-white/15"
+                >
+                  <Mail className="h-4 w-4" />
+                  Contact
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );
