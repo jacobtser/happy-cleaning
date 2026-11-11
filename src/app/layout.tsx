@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { AiAssistant } from "@/components/AiAssistant";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -120,6 +121,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppFloat />
         <AiAssistant />
+        <Analytics />
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
