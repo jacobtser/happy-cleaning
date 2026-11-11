@@ -76,7 +76,7 @@ export const services: Service[] = [
     description:
       "Rugs and carpets refreshed from the fibres up — for a cleaner, calmer home and a little more breathing room.",
     image: "/images/photos/carpet-cleaning.jpg",
-    imageAlt: "A person vacuuming a patterned carpet in a bright home",
+    imageAlt: "A woman vacuuming a rug in a bright modern living room",
     icon: "rug",
     unit: "carpet / rug",
     unitPlural: "carpets / rugs",
@@ -100,7 +100,7 @@ export const services: Service[] = [
     description:
       "Shirts, trousers, dresses and linens pressed neatly and returned ready to wear — no board, no rush, no wrinkles.",
     image: "/images/photos/ironing.jpg",
-    imageAlt: "A woman carefully ironing clothing at home",
+    imageAlt: "Hands carefully pressing a dark garment with a steam iron",
     icon: "iron",
     unit: "item",
     unitPlural: "items",

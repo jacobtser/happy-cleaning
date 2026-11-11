@@ -249,7 +249,7 @@ export default function AboutPage() {
                 <div className="relative aspect-square overflow-hidden rounded-[1.5rem] border border-white/60 shadow-lg">
                   <Image
                     src="/images/photos/ironing-detail.jpg"
-                    alt="A shirt being carefully pressed with an iron"
+                    alt="A man carefully ironing a dark garment at home"
                     fill
                     sizes="(max-width: 1024px) 35vw, 18vw"
                     className="object-cover"

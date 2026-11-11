@@ -51,9 +51,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/photos/hero-housekeeper.jpg",
-        width: 1600,
-        height: 1067,
-        alt: "Fresh towels being carefully folded by a housekeeper",
+        width: 1200,
+        height: 1500,
+        alt: "Hands carefully folding fresh linen on a bed",
       },
     ],
   },

@@ -115,7 +115,7 @@ export default function HomePage() {
                 <div className="relative aspect-[4/4.8] sm:aspect-[4/4.5]">
                   <Image
                     src="/images/photos/hero-housekeeper.jpg"
-                    alt="A housekeeper carefully folding fresh white towels"
+                    alt="Hands carefully folding fresh linen on a bed"
                     fill
                     priority
                     sizes="(max-width: 1024px) 92vw, 46vw"
