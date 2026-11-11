@@ -4,9 +4,6 @@ import { useState, useEffect, useRef, type FormEvent } from "react";
 import Link from "next/link";
 import { Mail, Send, Sparkle, WhatsApp } from "./Icons";
 
-const AI_API_ENDPOINT = process.env.NEXT_PUBLIC_AI_API_ENDPOINT || "";
-const AI_API_KEY = process.env.NEXT_PUBLIC_AI_API_KEY || "";
-
 type Message = {
   id: string;
   text: string;
@@ -316,34 +313,27 @@ export function AiAssistant() {
       return;
     }
 
-    // Fall back to external AI API if configured
-    if (!AI_API_ENDPOINT || !AI_API_KEY) {
-      aiReply =
-        "I'm not sure about that specific question, but I'd be happy to help! You can ask me about our services, prices, pickup & delivery, booking, complaints, or anything else related to Happy Cleaning. Or message us directly on WhatsApp at +233 55 818 4521.";
-      setTimeout(() => {
-        setMessages((prev) => [
-          ...prev,
-          { id: makeId(), text: aiReply, sender: "ai" },
-        ]);
-        setLoading(false);
-      }, 600);
-      return;
-    }
-
+    // Ask the server-side assistant, which keeps provider keys private.
     try {
-      const response = await fetch(AI_API_ENDPOINT, {
+      const response = await fetch("/api/chat", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${AI_API_KEY}`,
-        },
-        body: JSON.stringify({
-          message: input.trim(),
-          context: buildSystemPrompt(),
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: input.trim() }),
       });
-      const data = await response.json();
-      aiReply = data.reply || data.message || "I'm sorry, I didn't get a response. Please try again or message us on WhatsApp.";
+      const data = (await response.json()) as {
+        reply?: string;
+        error?: string;
+      };
+
+      if (response.status === 429) {
+        aiReply =
+          "I'm getting a lot of messages right now. Please try again in a moment, or message us on WhatsApp.";
+      } else {
+        aiReply =
+          (response.ok && data.reply) ||
+          data.error ||
+          "I'm having trouble connecting right now. You can still reach us directly on WhatsApp or by phone.";
+      }
     } catch {
       aiReply =
         "I'm having trouble connecting right now. You can still reach us directly on WhatsApp or by phone.";
@@ -354,38 +344,6 @@ export function AiAssistant() {
       { id: makeId(), text: aiReply, sender: "ai" },
     ]);
     setLoading(false);
-  }
-
-  function buildSystemPrompt() {
-    return `You are the assistant for Happy Cleaning Services, a laundry and cleaning business in Sege-Ada, Ghana.
-
-Business details:
-- Name: ${KNOWLEDGE.business.name}
-- Tagline: ${KNOWLEDGE.business.tagline}
-- Phone: ${KNOWLEDGE.business.phone}
-- Email: ${KNOWLEDGE.business.email}
-- Location: ${KNOWLEDGE.business.location}
-- WhatsApp: ${KNOWLEDGE.business.whatsapp}
-
-Services:
-${KNOWLEDGE.services.map((s) => `- ${s.name}: ${s.tagline}. Unit: ${s.unit}. Includes: ${s.includes.join(", ")}. Detail: ${s.detail}`).join("\n")}
-
-Pricing: ${KNOWLEDGE.pricing.intro} ${KNOWLEDGE.pricing.process} ${KNOWLEDGE.pricing.noPayment}
-
-Fulfilment: Pickup & delivery - ${KNOWLEDGE.fulfilment.pickup} Drop-off - ${KNOWLEDGE.fulfilment.dropoff}
-
-Order flow: ${KNOWLEDGE.orderFlow.join(" ")}
-
-Complaints: ${KNOWLEDGE.complaints.intro} ${KNOWLEDGE.complaints.whatToInclude} ${KNOWLEDGE.complaints.photos}
-
-Privacy: ${KNOWLEDGE.privacy.intro} ${KNOWLEDGE.privacy.noSale} ${KNOWLEDGE.privacy.yourChoices}
-
-Rules:
-- Be helpful, concise, friendly and professional
-- Never mention prices that aren't confirmed — quotes are always personal
-- No online payment is taken; quotes are confirmed on WhatsApp
-- If you don't know something, say you'll connect them with the team on WhatsApp
-- Always offer to help place an order on /book or message on WhatsApp`;
   }
 
   return (
