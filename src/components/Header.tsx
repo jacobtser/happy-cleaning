@@ -42,7 +42,7 @@ export function Header() {
           <Link
             href="/"
             className="shrink-0 rounded-full"
-            aria-label="Happy Cleaning Services home"
+            aria-label="Happy Cleaning Services Sege home"
           >
             <Logo />
           </Link>

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "dry cleaning Sege-Ada",
     "carpet cleaning Ghana",
     "ironing services Sege-Ada",
-    "Happy Cleaning Services",
+    "Happy Cleaning Services Sege",
     "laundry pickup and delivery Ghana",
   ],
   applicationName: site.name,

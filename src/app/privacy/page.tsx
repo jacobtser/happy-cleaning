@@ -14,7 +14,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Privacy Notice",
   description:
-    "How Happy Cleaning Services collects, uses and protects the details you share when you order, contact us or send feedback through this website.",
+    "How Happy Cleaning Services Sege collects, uses and protects the details you share when you order, contact us or send feedback through this website.",
 };
 
 const sections = [

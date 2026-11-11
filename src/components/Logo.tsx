@@ -6,7 +6,10 @@ export function Logo({
   className?: string;
 }) {
   return (
-    <span className={`flex items-center gap-2.5 ${className}`} aria-label="Happy Cleaning Services">
+    <span
+      className={`flex items-center gap-2.5 ${className}`}
+      aria-label="Happy Cleaning Services Sege"
+    >
       <span
         className={`grid h-10 w-10 shrink-0 place-items-center rounded-full ${
           light ? "bg-[#fbf7ef] text-[#163d33]" : "bg-[#163d33] text-[#fbf7ef]"
@@ -30,11 +33,11 @@ export function Logo({
           Happy Cleaning
         </span>
         <span
-          className={`mt-1 text-[0.5rem] font-extrabold uppercase leading-none tracking-[0.34em] ${
+          className={`mt-1 text-[0.5rem] font-extrabold uppercase leading-none tracking-[0.28em] ${
             light ? "text-cream/60" : "text-muted"
           }`}
         >
-          services
+          services · Sege
         </span>
       </span>
     </span>
