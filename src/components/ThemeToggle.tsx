@@ -15,19 +15,34 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    const sync = () => {
+      const current =
+        document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+      setTheme(current);
+    };
+
     const stored = localStorage.getItem("theme");
     const initial: Theme = stored === "dark" ? "dark" : "light";
     // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate theme from storage after mount
     setTheme(initial);
     applyTheme(initial);
     setMounted(true);
+
+    window.addEventListener("theme-change", sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.removeEventListener("theme-change", sync);
+      window.removeEventListener("storage", sync);
+    };
   }, []);
 
   function toggle() {
-    const next: Theme = theme === "dark" ? "light" : "dark";
+    const next: Theme =
+      document.documentElement.dataset.theme === "dark" ? "light" : "dark";
     setTheme(next);
     applyTheme(next);
     localStorage.setItem("theme", next);
+    window.dispatchEvent(new Event("theme-change"));
   }
 
   const isDark = theme === "dark";
