@@ -9,7 +9,7 @@ export function Logo({
     <span className={`flex items-center gap-2.5 ${className}`} aria-label="Happy Cleaning Services">
       <span
         className={`grid h-10 w-10 shrink-0 place-items-center rounded-full ${
-          light ? "bg-cream text-forest" : "bg-forest text-cream"
+          light ? "bg-[#fbf7ef] text-[#163d33]" : "bg-[#163d33] text-[#fbf7ef]"
         }`}
       >
         <svg viewBox="0 0 44 44" className="h-7 w-7" aria-hidden="true">

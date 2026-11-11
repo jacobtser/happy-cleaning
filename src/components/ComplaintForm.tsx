@@ -276,7 +276,7 @@ export function ComplaintForm() {
         {status === "error" && (
           <div
             role="alert"
-            className="mb-6 flex items-start gap-2.5 rounded-xl border border-coral/25 bg-coral/8 px-4 py-3 text-[0.8rem] font-semibold text-[#9b3d28]"
+            className="mb-6 flex items-start gap-2.5 rounded-xl border border-coral/25 bg-coral/10 px-4 py-3 text-[0.8rem] font-semibold text-coral-deep"
           >
             <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
             <span>
@@ -307,7 +307,7 @@ export function ComplaintForm() {
               aria-describedby={errors.name ? "complaint-name-error" : undefined}
             />
             {errors.name && (
-              <p id="complaint-name-error" className="mt-1.5 text-xs font-semibold text-[#b34b33]">
+              <p id="complaint-name-error" className="mt-1.5 text-xs font-semibold text-coral-deep">
                 {errors.name}
               </p>
             )}
@@ -330,7 +330,7 @@ export function ComplaintForm() {
               aria-describedby={errors.email ? "complaint-email-error" : undefined}
             />
             {errors.email && (
-              <p id="complaint-email-error" className="mt-1.5 text-xs font-semibold text-[#b34b33]">
+              <p id="complaint-email-error" className="mt-1.5 text-xs font-semibold text-coral-deep">
                 {errors.email}
               </p>
             )}
@@ -354,7 +354,7 @@ export function ComplaintForm() {
               aria-describedby={errors.phone ? "complaint-phone-error" : undefined}
             />
             {errors.phone && (
-              <p id="complaint-phone-error" className="mt-1.5 text-xs font-semibold text-[#b34b33]">
+              <p id="complaint-phone-error" className="mt-1.5 text-xs font-semibold text-coral-deep">
                 {errors.phone}
               </p>
             )}
@@ -380,7 +380,7 @@ export function ComplaintForm() {
               ))}
             </select>
             {errors.topic && (
-              <p id="complaint-topic-error" className="mt-1.5 text-xs font-semibold text-[#b34b33]">
+              <p id="complaint-topic-error" className="mt-1.5 text-xs font-semibold text-coral-deep">
                 {errors.topic}
               </p>
             )}
@@ -416,7 +416,7 @@ export function ComplaintForm() {
               aria-describedby={errors.message ? "complaint-message-error" : "complaint-message-help"}
             />
             {errors.message ? (
-              <p id="complaint-message-error" className="mt-1.5 text-xs font-semibold text-[#b34b33]">
+              <p id="complaint-message-error" className="mt-1.5 text-xs font-semibold text-coral-deep">
                 {errors.message}
               </p>
             ) : (

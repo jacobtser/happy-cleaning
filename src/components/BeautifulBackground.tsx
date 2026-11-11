@@ -8,21 +8,21 @@ export function BeautifulBackground() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-[-1] overflow-hidden"
     >
-      {/* Background video, softened so the hero copy stays readable. */}
+      {/* Background video, clearly visible but calm. */}
       <video
         autoPlay
         muted
         loop
         playsInline
-        className="absolute inset-0 h-full w-full object-cover opacity-40"
+        className="video-bg absolute inset-0 h-full w-full object-cover"
       >
         <source src="/videos/laundry-background.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Light veil keeps the brand's cream canvas and text contrast intact. */}
-      <div className="absolute inset-0 bg-cream/85" />
-      <div className="absolute inset-0 bg-gradient-to-tr from-sage/35 via-transparent to-gold/10" />
+      {/* Soft veil keeps the video visible while preserving text contrast. */}
+      <div className="video-veil absolute inset-0" />
+      <div className="video-tint absolute inset-0 bg-gradient-to-tr from-sage/25 via-transparent to-gold/10" />
 
       {/* Decorative glow blobs */}
       <div className="absolute -top-20 -left-20 w-[40rem] h-[40rem] rounded-full bg-coral/20 blur-[120px] animate-pulse-slow" />

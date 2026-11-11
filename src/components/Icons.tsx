@@ -267,3 +267,32 @@ export function Send(props: IconProps) {
     </IconBase>
   );
 }
+
+export function Assistant(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <rect x="4" y="7" width="16" height="12" rx="4" />
+      <path d="M9 7V5.5A3 3 0 0 1 12 2.5a3 3 0 0 1 3 3V7" />
+      <circle cx="9" cy="13" r="1.2" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="13" r="1.2" fill="currentColor" stroke="none" />
+      <path d="M9.5 16.5c.8.7 1.6 1 2.5 1s1.7-.3 2.5-1" />
+    </IconBase>
+  );
+}
+
+export function Sun(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2.5v2.5M12 19v2.5M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M2.5 12H5M19 12h2.5M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" />
+    </IconBase>
+  );
+}
+
+export function Moon(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path d="M20.2 14.8A8.5 8.5 0 0 1 9.2 3.8a8.7 8.7 0 1 0 11 11Z" />
+    </IconBase>
+  );
+}

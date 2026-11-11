@@ -369,7 +369,7 @@ export function OrderForm({ initialService }: { initialService?: ServiceId }) {
         {stepError && (
           <div
             role="alert"
-            className="mb-6 flex items-start gap-2.5 rounded-xl border border-coral/25 bg-coral/8 px-4 py-3 text-[0.8rem] font-semibold text-[#9b3d28]"
+            className="mb-6 flex items-start gap-2.5 rounded-xl border border-coral/25 bg-coral/10 px-4 py-3 text-[0.8rem] font-semibold text-coral-deep"
           >
             <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
             {stepError}
@@ -624,7 +624,7 @@ export function OrderForm({ initialService }: { initialService?: ServiceId }) {
                   aria-describedby={errors.name ? "order-name-error" : undefined}
                 />
                 {errors.name && (
-                  <p id="order-name-error" className="mt-1.5 text-xs font-semibold text-[#b34b33]">
+                  <p id="order-name-error" className="mt-1.5 text-xs font-semibold text-coral-deep">
                     {errors.name}
                   </p>
                 )}
@@ -647,7 +647,7 @@ export function OrderForm({ initialService }: { initialService?: ServiceId }) {
                   aria-describedby={errors.phone ? "order-phone-error" : undefined}
                 />
                 {errors.phone && (
-                  <p id="order-phone-error" className="mt-1.5 text-xs font-semibold text-[#b34b33]">
+                  <p id="order-phone-error" className="mt-1.5 text-xs font-semibold text-coral-deep">
                     {errors.phone}
                   </p>
                 )}
@@ -671,7 +671,7 @@ export function OrderForm({ initialService }: { initialService?: ServiceId }) {
                   aria-describedby={errors.area ? "order-area-error" : undefined}
                 />
                 {errors.area && (
-                  <p id="order-area-error" className="mt-1.5 text-xs font-semibold text-[#b34b33]">
+                  <p id="order-area-error" className="mt-1.5 text-xs font-semibold text-coral-deep">
                     {errors.area}
                   </p>
                 )}
@@ -691,7 +691,7 @@ export function OrderForm({ initialService }: { initialService?: ServiceId }) {
                   aria-describedby={errors.date ? "order-date-error" : undefined}
                 />
                 {errors.date && (
-                  <p id="order-date-error" className="mt-1.5 text-xs font-semibold text-[#b34b33]">
+                  <p id="order-date-error" className="mt-1.5 text-xs font-semibold text-coral-deep">
                     {errors.date}
                   </p>
                 )}

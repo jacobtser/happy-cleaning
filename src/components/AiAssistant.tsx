@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, type FormEvent } from "react";
 import Link from "next/link";
-import { Close, Mail, Send, Sparkle, WhatsApp } from "./Icons";
+import { Assistant, Close, Mail, Send, WhatsApp } from "./Icons";
 
 type Message = {
   id: string;
@@ -372,19 +372,27 @@ export function AiAssistant() {
 
   return (
     <>
-      {/* Floating trigger */}
+      {/* Floating AI assistant trigger */}
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        aria-label={open ? "Close assistant" : "Open assistant"}
+        aria-label={open ? "Close AI assistant" : "Open AI assistant"}
         aria-expanded={open}
         aria-controls="ai-chat-panel"
-        className="fixed left-3 bottom-[calc(env(safe-area-inset-bottom)_+_0.9rem)] z-50 inline-flex h-12 w-12 items-center justify-center rounded-full bg-coral text-white shadow-[0_14px_40px_rgba(229,108,78,0.35)] transition hover:scale-105 hover:bg-coral-deep sm:left-6 sm:bottom-6 sm:h-14 sm:w-14"
+        className="group fixed left-3 bottom-[calc(env(safe-area-inset-bottom)_+_0.9rem)] z-50 inline-flex h-12 items-center gap-2 rounded-full border border-white/15 bg-[#163d33] px-3.5 text-[#fbf7ef] shadow-[0_14px_40px_rgba(12,43,36,0.28)] transition hover:-translate-y-0.5 hover:bg-[#0c2b24] sm:left-6 sm:bottom-6 sm:h-14 sm:gap-2.5 sm:px-5"
       >
-        <span className="relative">
-          <Sparkle className="h-5 w-5 animate-bounce sm:h-6 sm:w-6" />
+        <span className="grid h-8 w-8 place-items-center rounded-full bg-coral text-white shadow-[0_6px_16px_rgba(229,108,78,0.35)] sm:h-9 sm:w-9">
+          <Assistant className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
         </span>
-        <span className="absolute -top-1.5 -right-1.5 h-3 w-3 rounded-full border-2 border-coral bg-white animate-pulse sm:-top-2 sm:-right-2" />
+        <span className="flex flex-col items-start leading-none">
+          <span className="text-[0.56rem] font-extrabold uppercase tracking-[0.18em] text-gold sm:text-[0.6rem]">
+            AI
+          </span>
+          <span className="text-[0.78rem] font-extrabold sm:text-[0.84rem]">
+            Assistant
+          </span>
+        </span>
+        <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full border-2 border-[#163d33] bg-gold animate-pulse" />
       </button>
 
       {/* Chat panel */}
@@ -406,15 +414,15 @@ export function AiAssistant() {
           >
             <div className="flex items-center justify-between gap-3 bg-forest p-4 text-cream sm:p-5">
               <div className="flex min-w-0 items-center gap-3">
-                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold text-forest-deep">
-                  <Sparkle className="h-5 w-5" />
+                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-coral text-white">
+                  <Assistant className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
                   <p className="truncate text-sm font-extrabold leading-none">
-                    Happy Assistant
+                    AI Assistant
                   </p>
                   <p className="mt-1 text-[0.7rem] leading-4 text-cream/70">
-                    AI support · Sege-Ada
+                    Happy Cleaning · Sege-Ada
                   </p>
                 </div>
               </div>
