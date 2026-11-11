@@ -20,7 +20,7 @@ import { generalWhatsAppUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Place an Order",
   description:
-    "Build your laundry, dry cleaning, carpet cleaning or ironing order in three simple steps. Send it straight to Happy Cleaning Services Sege on WhatsApp — no payment online.",
+    "Build your laundry, dry cleaning, carpet cleaning or ironing order in three simple steps. Send it straight to Happy Cleaning Services Sege Ada on WhatsApp — no payment online.",
 };
 
 const promises = [

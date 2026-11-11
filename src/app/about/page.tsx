@@ -19,7 +19,7 @@ import { generalWhatsAppUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Happy Cleaning Services Sege is a local laundry and cleaning team in Sege-Ada, Ghana. Thoughtful laundry, dry cleaning, carpet cleaning and ironing, with pickup and drop-off.",
+    "Happy Cleaning Services Sege Ada is a local laundry and cleaning team in Sege-Ada, Ghana. Thoughtful laundry, dry cleaning, carpet cleaning and ironing, with pickup and drop-off.",
 };
 
 const values = [
@@ -80,7 +80,7 @@ export default function AboutPage() {
               <span className="italic text-coral">fold.</span>
             </h1>
             <p className="animate-fade-up-delay-2 mt-6 max-w-xl text-[0.98rem] leading-7 text-muted sm:text-base">
-              Happy Cleaning Services Sege is a local laundry and cleaning team based
+              Happy Cleaning Services Sege Ada is a local laundry and cleaning team based
               in Sege-Ada. We look after the clothes, linens and carpets that
               make everyday life feel a little lighter — with careful hands and
               clear, friendly service.

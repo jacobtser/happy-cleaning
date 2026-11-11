@@ -75,7 +75,7 @@ export default function HomePage() {
               </span>
             </h1>
             <p className="hero-lede animate-fade-up-delay-2 mt-6 max-w-xl text-pretty text-[1.02rem] leading-7 text-muted sm:text-lg sm:leading-8">
-              Happy Cleaning Services Sege takes the laundry off your hands —
+              Happy Cleaning Services Sege Ada takes the laundry off your hands —
               fresh washing, careful dry cleaning, deep carpet care and crisp
               ironing, with pickup and drop-off around Sege-Ada.
             </p>
@@ -127,7 +127,7 @@ export default function HomePage() {
                 <div className="absolute right-4 bottom-4 left-4 flex items-end justify-between gap-4 rounded-2xl border border-white/20 bg-forest-deep/70 p-3.5 text-cream backdrop-blur-md sm:right-5 sm:bottom-5 sm:left-5 sm:p-4">
                   <div>
                     <p className="text-[0.58rem] font-extrabold uppercase tracking-[0.24em] text-gold">
-                      Happy Cleaning Services Sege
+                      Happy Cleaning Services Sege Ada
                     </p>
                     <p className="mt-1 font-display text-xl leading-tight sm:text-2xl">
                       Care in every fold.

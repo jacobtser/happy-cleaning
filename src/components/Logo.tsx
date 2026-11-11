@@ -8,7 +8,7 @@ export function Logo({
   return (
     <span
       className={`flex items-center gap-2.5 ${className}`}
-      aria-label="Happy Cleaning Services Sege"
+      aria-label="Happy Cleaning Services Sege Ada"
     >
       <span
         className={`grid h-10 w-10 shrink-0 place-items-center rounded-full ${
@@ -33,11 +33,11 @@ export function Logo({
           Happy Cleaning
         </span>
         <span
-          className={`mt-1 text-[0.5rem] font-extrabold uppercase leading-none tracking-[0.28em] ${
+          className={`mt-1 text-[0.5rem] font-extrabold uppercase leading-none tracking-[0.2em] ${
             light ? "text-cream/60" : "text-muted"
           }`}
         >
-          services · Sege
+          services · Sege Ada
         </span>
       </span>
     </span>

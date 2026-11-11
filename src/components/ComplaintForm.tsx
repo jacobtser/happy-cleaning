@@ -91,7 +91,7 @@ export function ComplaintForm() {
       "",
       fields.message.trim(),
       "",
-      "— Sent from the Happy Cleaning Services Sege website",
+      "— Sent from the Happy Cleaning Services Sege Ada website",
     ]
       .filter(Boolean)
       .join("\n");
@@ -117,7 +117,7 @@ export function ComplaintForm() {
 
     if (!site.formspreeEndpoint) {
       const subject = encodeURIComponent(
-        `[${fields.topic}] ${fields.name.trim()} — Happy Cleaning Services Sege`,
+        `[${fields.topic}] ${fields.name.trim()} — Happy Cleaning Services Sege Ada`,
       );
       const body = encodeURIComponent(buildEmailBody());
       window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
@@ -141,7 +141,7 @@ export function ComplaintForm() {
           topic: fields.topic,
           orderReference: fields.orderRef.trim(),
           message: fields.message.trim(),
-          _subject: `[${fields.topic}] ${fields.name.trim()} — Happy Cleaning Services Sege`,
+          _subject: `[${fields.topic}] ${fields.name.trim()} — Happy Cleaning Services Sege Ada`,
           _gotcha: website,
         }),
       });
@@ -188,7 +188,7 @@ export function ComplaintForm() {
           {sentByEmail && (
             <a
               href={`mailto:${site.email}?subject=${encodeURIComponent(
-                `[${fields.topic}] ${fields.name.trim()} — Happy Cleaning Services Sege`,
+                `[${fields.topic}] ${fields.name.trim()} — Happy Cleaning Services Sege Ada`,
               )}&body=${encodeURIComponent(buildEmailBody())}`}
               className="btn btn-coral w-full"
             >

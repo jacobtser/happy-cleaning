@@ -87,7 +87,7 @@ function buildOrderMessage({
     .join("\n");
 
   const lines = [
-    "Hello Happy Cleaning Services Sege!",
+    "Hello Happy Cleaning Services Sege Ada!",
     "I'd like to place an order.",
     "",
     `Order reference: ${orderRef || "To be confirmed"}`,

@@ -16,7 +16,7 @@ import { generalWhatsAppUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Laundry, Dry Cleaning, Carpet Cleaning & Ironing",
   description:
-    "Explore the Happy Cleaning Services Sege menu: laundry, dry cleaning, carpet cleaning and ironing in Sege-Ada, Ghana. Pickup and drop-off available. Request a personal quote on WhatsApp.",
+    "Explore the Happy Cleaning Services Sege Ada menu: laundry, dry cleaning, carpet cleaning and ironing in Sege-Ada, Ghana. Pickup and drop-off available. Request a personal quote on WhatsApp.",
 };
 
 export default function ServicesPage() {

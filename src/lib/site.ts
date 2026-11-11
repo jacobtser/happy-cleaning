@@ -1,6 +1,6 @@
 export const site = {
-  name: "Happy Cleaning Services Sege",
-  shortName: "Happy Cleaning Sege",
+  name: "Happy Cleaning Services Sege Ada",
+  shortName: "Happy Cleaning Sege Ada",
   tagline: "Wash day, made lighter.",
   description:
     "Laundry, dry cleaning, carpet cleaning and ironing in Sege-Ada, Ghana. Build your order online and send it straight to WhatsApp. Pickup and drop-off available.",

@@ -18,7 +18,7 @@ export function Footer() {
       <div className="container-page footer-pad pt-16 md:pt-20">
         <div className="grid gap-12 border-b border-white/10 pb-12 md:grid-cols-2 lg:grid-cols-[1.45fr_0.75fr_0.9fr_1.1fr]">
           <div>
-            <Link href="/" aria-label="Happy Cleaning Services Sege home">
+            <Link href="/" aria-label="Happy Cleaning Services Sege Ada home">
               <Logo light />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-7 text-cream/60">

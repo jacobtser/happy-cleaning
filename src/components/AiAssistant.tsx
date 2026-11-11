@@ -18,11 +18,11 @@ function makeId() {
 }
 
 // ---------------------------------------------------------------------------
-// Knowledge base — everything about Happy Cleaning Services Sege
+// Knowledge base — everything about Happy Cleaning Services Sege Ada
 // ---------------------------------------------------------------------------
 const KNOWLEDGE = {
   business: {
-    name: "Happy Cleaning Services Sege",
+    name: "Happy Cleaning Services Sege Ada",
     tagline: "Wash day, made lighter.",
     phone: "055 818 4521",
     phoneInternational: "+233 55 818 4521",
@@ -422,7 +422,7 @@ export function AiAssistant() {
                     AI Assistant
                   </p>
                   <p className="mt-1 text-[0.7rem] leading-4 text-cream/70">
-                    Happy Cleaning Sege · Sege-Ada
+                    Happy Cleaning Sege Ada · Sege-Ada
                   </p>
                 </div>
               </div>

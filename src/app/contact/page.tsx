@@ -17,7 +17,7 @@ import { generalWhatsAppUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Contact & Complaints",
   description:
-    "Contact Happy Cleaning Services Sege in Sege-Ada, Ghana. Call or WhatsApp 055 818 4521, email sknumekevor@gmail.com, or send a complaint or feedback through our contact form.",
+    "Contact Happy Cleaning Services Sege Ada in Sege-Ada, Ghana. Call or WhatsApp 055 818 4521, email sknumekevor@gmail.com, or send a complaint or feedback through our contact form.",
 };
 
 const contactCards = [
