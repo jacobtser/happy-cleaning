@@ -64,6 +64,9 @@ export const metadata: Metadata = {
     description: site.description,
     images: ["/images/photos/hero-housekeeper.jpg"],
   },
+  verification: {
+    google: "SGG0doK6am3B2S_jQNHkv6nvsTNECpxuT0gNi7vTgeE",
+  },
 };
 
 export const viewport: Viewport = {
