@@ -16,7 +16,7 @@ export const site = {
     "https://www.google.com/maps/search/?api=1&query=Sege-Ada%2C%20Greater%20Accra%2C%20Ghana",
   url:
     process.env.NEXT_PUBLIC_SITE_URL ||
-    "https://happy-cleaning-ef17.vercel.app",
+    "https://happy-cleaning-services-sege-ada.vercel.app",
   formspreeEndpoint: process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || "",
   socialHandle: "@happycleaningservices",
 } as const;
