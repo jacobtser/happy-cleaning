@@ -1,5 +1,19 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# SAFETY: this repository sits at the root of a Windows user profile.
+# Ignore everything by default and allow only the website's own files, so
+# personal folders, SSH keys and app credentials can never be committed.
+/*
+!/.gitignore
+!/.env.example
+!/AGENTS.md
+!/eslint.config.mjs
+!/next.config.ts
+!/package.json
+!/public/
+!/src/
+!/tsconfig.json
+
 # dependencies
 /node_modules
 /.pnp

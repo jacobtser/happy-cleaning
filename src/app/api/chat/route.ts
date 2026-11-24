@@ -274,7 +274,32 @@ async function getOpenRouterModel() {
   return openRouterModel;
 }
 
+// Only accept requests made by this website's own pages, so other sites
+// cannot embed the assistant and spend the AI provider quota.
+function isSameOrigin(request: Request) {
+  const fetchSite = request.headers.get("sec-fetch-site");
+  if (fetchSite && fetchSite !== "same-origin" && fetchSite !== "none") {
+    return false;
+  }
+
+  const origin = request.headers.get("origin");
+  if (!origin) return true;
+
+  const host =
+    request.headers.get("x-forwarded-host") || request.headers.get("host");
+
+  try {
+    return new URL(origin).host === host;
+  } catch {
+    return false;
+  }
+}
+
 export async function POST(request: Request) {
+  if (!isSameOrigin(request)) {
+    return NextResponse.json({ error: "Forbidden." }, { status: 403 });
+  }
+
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     request.headers.get("x-real-ip") ||
