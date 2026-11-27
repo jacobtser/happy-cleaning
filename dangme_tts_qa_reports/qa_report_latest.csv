@@ -1,5 +1,5 @@
 id,text,audio,audio_absolute,file_status,source_audio,split,duration,audio_group,tone_collision,cleaned_seconds,noise_gate_db,clicks_removed,alias_of,alias_kind,reviewed,tagged,tags,breakages,silences,worng word,notes,updated_at
-unit_356a192b7913,1,wavs/unit_356a192b7913.wav,C:\Users\jacob\OneDrive\Desktop\Audio Engineering\dangme_tts\data\units\wavs\unit_356a192b7913.wav,ok,1.wav,train,0.6800,g00303,0,0.3200,40.00,3,,,yes,yes,breakages,1,0,0,qa smoke test,2026-11-27T22:36:32+00:00
+unit_356a192b7913,1,wavs/unit_356a192b7913.wav,C:\Users\jacob\OneDrive\Desktop\Audio Engineering\dangme_tts\data\units\wavs\unit_356a192b7913.wav,ok,1.wav,train,0.6800,g00303,0,0.3200,40.00,3,,,no,no,,0,0,0,,
 unit_b1d5781111d8,10,wavs/unit_b1d5781111d8.wav,C:\Users\jacob\OneDrive\Desktop\Audio Engineering\dangme_tts\data\units\wavs\unit_b1d5781111d8.wav,ok,10.wav,train,0.5350,g00307,0,0.3050,40.00,1,,,no,no,,0,0,0,,
 unit_310b86e0b62b,100,wavs/unit_310b86e0b62b.wav,C:\Users\jacob\OneDrive\Desktop\Audio Engineering\dangme_tts\data\units\wavs\unit_310b86e0b62b.wav,ok,100.wav,train,0.4000,g00542,0,0.1730,40.00,0,,,no,no,,0,0,0,,
 unit_e3cbba8883fe,1000,wavs/unit_e3cbba8883fe.wav,C:\Users\jacob\OneDrive\Desktop\Audio Engineering\dangme_tts\data\units\wavs\unit_e3cbba8883fe.wav,ok,1000.wav,train,0.6300,g00055,0,0.2460,40.00,1,,,no,no,,0,0,0,,
