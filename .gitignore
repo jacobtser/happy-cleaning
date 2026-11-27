@@ -7,6 +7,7 @@
 !/.gitignore
 !/.env.example
 !/AGENTS.md
+!/dangme_tts_qa_reports/
 !/eslint.config.mjs
 !/next.config.ts
 !/package.json
