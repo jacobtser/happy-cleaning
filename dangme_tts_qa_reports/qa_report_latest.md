@@ -1,15 +1,19 @@
 # Dangme recording QA report
 
-- Generated: `2026-11-27T22:36:57+00:00`
+- Generated: `2026-11-27T22:36:32+00:00`
 - Recordings reviewed in this report: **1521**
-- Units with tags: **0**
-- Units with notes: **0**
-- Units reviewed (tag or note): **0**
+- Units with tags: **1**
+- Units with notes: **1**
+- Units reviewed (tag or note): **1**
 
 | Tag | Count |
 |---|---:|
-| `breakages` | 0 |
+| `breakages` | 1 |
 | `silences` | 0 |
 | `worng word` | 0 |
 
-No tagged or noted units. All recordings passed this QA pass.
+## Units needing work
+
+| Label | ID | Tags | Notes | Source | Audio |
+|---|---|---|---|---|---|
+| 1 | `unit_356a192b7913` | breakages | qa smoke test | 1.wav | `wavs/unit_356a192b7913.wav` |

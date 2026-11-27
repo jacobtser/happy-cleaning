@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T22:36:57+00:00",
+  "generated_at": "2026-11-27T22:36:32+00:00",
   "tags": [
     "breakages",
     "silences",
@@ -7,11 +7,11 @@
   ],
   "summary": {
     "total": 1521,
-    "tagged": 0,
-    "with_notes": 0,
-    "reviewed": 0,
+    "tagged": 1,
+    "with_notes": 1,
+    "reviewed": 1,
     "missing_files": 0,
-    "breakages": 0,
+    "breakages": 1,
     "silences": 0,
     "worng word": 0
   },
@@ -32,14 +32,14 @@
       "clicks_removed": "3",
       "alias_of": "",
       "alias_kind": "",
-      "reviewed": "no",
-      "tagged": "no",
-      "tags": "",
-      "breakages": "0",
+      "reviewed": "yes",
+      "tagged": "yes",
+      "tags": "breakages",
+      "breakages": "1",
       "silences": "0",
       "worng word": "0",
-      "notes": "",
-      "updated_at": ""
+      "notes": "qa smoke test",
+      "updated_at": "2026-11-27T22:36:32+00:00"
     },
     {
       "id": "unit_b1d5781111d8",

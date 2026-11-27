@@ -1,1 +1,2 @@
 id,text,audio,audio_absolute,file_status,source_audio,split,duration,audio_group,tone_collision,cleaned_seconds,noise_gate_db,clicks_removed,alias_of,alias_kind,reviewed,tagged,tags,breakages,silences,worng word,notes,updated_at
+unit_356a192b7913,1,wavs/unit_356a192b7913.wav,C:\Users\jacob\OneDrive\Desktop\Audio Engineering\dangme_tts\data\units\wavs\unit_356a192b7913.wav,ok,1.wav,train,0.6800,g00303,0,0.3200,40.00,3,,,yes,yes,breakages,1,0,0,qa smoke test,2026-11-27T22:36:32+00:00
